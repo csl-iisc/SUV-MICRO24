@@ -1,0 +1,336 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AAPT_HIGH_PHI	DynamicHostTransform.cpp	/^  AAPT_HIGH_PHI,$/;"	e	enum:__anon1::AllocationAccessPatternType	file:
+AAPT_HIGH_X	DynamicHostTransform.cpp	/^  AAPT_HIGH_X,$/;"	e	enum:__anon1::AllocationAccessPatternType	file:
+AAPT_HIGH_Y	DynamicHostTransform.cpp	/^  AAPT_HIGH_Y,$/;"	e	enum:__anon1::AllocationAccessPatternType	file:
+AAPT_NONE	DynamicHostTransform.cpp	/^  AAPT_NONE,$/;"	e	enum:__anon1::AllocationAccessPatternType	file:
+AAPType	DynamicHostTransform.cpp	/^  AllocationAccessPatternType AAPType;$/;"	m	struct:__anon1::AllocationStruct	file:
+ADVISORY_MAX	DynamicHostTransform.cpp	/^  ADVISORY_MAX,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_ACCESSED_BY	DynamicHostTransform.cpp	/^  ADVISORY_SET_ACCESSED_BY,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_DEMAND_MIGRATE	DynamicHostTransform.cpp	/^  ADVISORY_SET_DEMAND_MIGRATE,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_PIN_DEVICE	DynamicHostTransform.cpp	/^  ADVISORY_SET_PIN_DEVICE,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_PIN_HOST	DynamicHostTransform.cpp	/^  ADVISORY_SET_PIN_HOST,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_PREFERRED_LOCATION	DynamicHostTransform.cpp	/^  ADVISORY_SET_PREFERRED_LOCATION,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_PREFETCH	DynamicHostTransform.cpp	/^  ADVISORY_SET_PREFETCH,$/;"	e	enum:__anon1::AdvisoryType	file:
+ADVISORY_SET_PRIORITIZED_LOCATION	DynamicHostTransform.cpp	/^  ADVISORY_SET_PRIORITIZED_LOCATION,$/;"	e	enum:__anon1::AdvisoryType	file:
+AXIS_TYPE_BDIMX	DynamicHostTransform.cpp	/^  AXIS_TYPE_BDIMX,$/;"	e	enum:__anon1::BlockSizeType	file:
+AXIS_TYPE_BDIMY	DynamicHostTransform.cpp	/^  AXIS_TYPE_BDIMY,$/;"	e	enum:__anon1::BlockSizeType	file:
+AXIS_TYPE_BDIMZ	DynamicHostTransform.cpp	/^  AXIS_TYPE_BDIMZ,$/;"	e	enum:__anon1::BlockSizeType	file:
+AXIS_TYPE_GDIMX	DynamicHostTransform.cpp	/^  AXIS_TYPE_GDIMX,$/;"	e	enum:__anon1::GridSizeType	file:
+AXIS_TYPE_GDIMY	DynamicHostTransform.cpp	/^  AXIS_TYPE_GDIMY,$/;"	e	enum:__anon1::GridSizeType	file:
+AXIS_TYPE_GDIMZ	DynamicHostTransform.cpp	/^  AXIS_TYPE_GDIMZ,$/;"	e	enum:__anon1::GridSizeType	file:
+AXIS_TYPE_GNONE	DynamicHostTransform.cpp	/^  AXIS_TYPE_GNONE,$/;"	e	enum:__anon1::GridSizeType	file:
+AXIS_TYPE_NONE	DynamicHostTransform.cpp	/^  AXIS_TYPE_NONE,$/;"	e	enum:__anon1::BlockSizeType	file:
+AccessCount	DynamicHostTransform.cpp	/^  unsigned long long AccessCount;$/;"	m	struct:__anon1::AllocationStruct	file:
+Advisory	DynamicHostTransform.cpp	/^  AdvisoryType Advisory;$/;"	m	struct:__anon1::AllocationStruct	file:
+Advisory	DynamicHostTransform.cpp	/^  AdvisoryType Advisory;$/;"	m	struct:__anon1::SubAllocationStruct	file:
+AdvisorySize	DynamicHostTransform.cpp	/^  unsigned long long AdvisorySize;$/;"	m	struct:__anon1::AllocationStruct	file:
+AdvisoryType	DynamicHostTransform.cpp	/^enum AdvisoryType {$/;"	g	namespace:__anon1	file:
+AllocationAccessPatternType	DynamicHostTransform.cpp	/^enum AllocationAccessPatternType {$/;"	g	namespace:__anon1	file:
+AllocationInst	DynamicHostTransform.cpp	/^  Value *AllocationInst;$/;"	m	struct:__anon1::AllocationStruct	file:
+AllocationStruct	DynamicHostTransform.cpp	/^  AllocationStruct() : Advisory(ADVISORY_MAX){};$/;"	f	struct:__anon1::AllocationStruct
+AllocationStruct	DynamicHostTransform.cpp	/^struct AllocationStruct {$/;"	s	namespace:__anon1	file:
+BlockSizeType	DynamicHostTransform.cpp	/^enum BlockSizeType {$/;"	g	namespace:__anon1	file:
+DEBUG_TYPE	DynamicHostTransform.cpp	51;"	d	file:
+Density	DynamicHostTransform.cpp	/^  float Density;$/;"	m	struct:__anon1::AllocationStruct	file:
+DynamicHostTransform	DynamicHostTransform.cpp	/^  DynamicHostTransform() : ModulePass(ID) {}$/;"	f	struct:__anon1::DynamicHostTransform
+DynamicHostTransform	DynamicHostTransform.cpp	/^struct DynamicHostTransform : public ModulePass {$/;"	s	namespace:__anon1	file:
+ETO_ADD	DynamicHostTransform.cpp	/^  ETO_ADD,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_AND	DynamicHostTransform.cpp	/^  ETO_AND,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_ARG	DynamicHostTransform.cpp	/^  ETO_ARG,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_BDIMX	DynamicHostTransform.cpp	/^  ETO_BDIMX,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_BDIMY	DynamicHostTransform.cpp	/^  ETO_BDIMY,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_BIDX	DynamicHostTransform.cpp	/^  ETO_BIDX,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_BIDY	DynamicHostTransform.cpp	/^  ETO_BIDY,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_CONST	DynamicHostTransform.cpp	/^  ETO_CONST,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_DIV	DynamicHostTransform.cpp	/^  ETO_DIV,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_GEP	DynamicHostTransform.cpp	/^  ETO_GEP,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_ICMP	DynamicHostTransform.cpp	/^  ETO_ICMP,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_INTERM	DynamicHostTransform.cpp	/^  ETO_INTERM,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_MEMOP	DynamicHostTransform.cpp	/^  ETO_MEMOP,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_MUL	DynamicHostTransform.cpp	/^  ETO_MUL,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_NONE	DynamicHostTransform.cpp	/^  ETO_NONE,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_OR	DynamicHostTransform.cpp	/^  ETO_OR,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_PC	DynamicHostTransform.cpp	/^  ETO_PC,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_PHI	DynamicHostTransform.cpp	/^  ETO_PHI,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_PHI_TERM	DynamicHostTransform.cpp	/^  ETO_PHI_TERM,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_SDIV	DynamicHostTransform.cpp	/^  ETO_SDIV,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_SEXT	DynamicHostTransform.cpp	/^  ETO_SEXT,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_SHL	DynamicHostTransform.cpp	/^  ETO_SHL,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_SUB	DynamicHostTransform.cpp	/^  ETO_SUB,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_TIDX	DynamicHostTransform.cpp	/^  ETO_TIDX,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_TIDY	DynamicHostTransform.cpp	/^  ETO_TIDY,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_UDIV	DynamicHostTransform.cpp	/^  ETO_UDIV,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ETO_ZEXT	DynamicHostTransform.cpp	/^  ETO_ZEXT,$/;"	e	enum:__anon1::ExprTreeOp	file:
+ExprTreeNode	DynamicHostTransform.cpp	/^struct ExprTreeNode {$/;"	s	namespace:__anon1	file:
+ExprTreeNodeAdvanced	DynamicHostTransform.cpp	/^struct ExprTreeNodeAdvanced {$/;"	s	namespace:__anon1	file:
+ExprTreeOp	DynamicHostTransform.cpp	/^enum ExprTreeOp {$/;"	g	namespace:__anon1	file:
+FormalArgumentToActualArgumentMap	DynamicHostTransform.cpp	/^std::map<Value *, std::vector<Value *>> FormalArgumentToActualArgumentMap;$/;"	m	namespace:__anon1	file:
+FunctionCallToActualArgumentToFormalArgumentMap	DynamicHostTransform.cpp	/^    FunctionCallToActualArgumentToFormalArgumentMap;$/;"	m	namespace:__anon1	file:
+FunctionCallToActualArumentsMap	DynamicHostTransform.cpp	/^std::map<CallBase *, std::vector<Value *>> FunctionCallToActualArumentsMap;$/;"	m	namespace:__anon1	file:
+FunctionCallToFormalArgumentToActualArgumentMap	DynamicHostTransform.cpp	/^    FunctionCallToFormalArgumentToActualArgumentMap;$/;"	m	namespace:__anon1	file:
+FunctionToFormalArgumentMap	DynamicHostTransform.cpp	/^std::map<Function *, std::vector<Value *>> FunctionToFormalArgumentMap;$/;"	m	namespace:__anon1	file:
+GPU_SIZE	DynamicHostTransform.cpp	/^unsigned long long GPU_SIZE = (1ULL) * 1024ULL * 1024ULL * 2048ULL;$/;"	v
+GridSizeType	DynamicHostTransform.cpp	/^enum GridSizeType {$/;"	g	namespace:__anon1	file:
+HostSideKernelNameToOriginalNameMap	DynamicHostTransform.cpp	/^std::map<std::string, std::string> HostSideKernelNameToOriginalNameMap;$/;"	m	namespace:__anon1	file:
+ID	DynamicHostTransform.cpp	/^  static char ID; \/\/ Pass identification, replacement for typeid$/;"	m	struct:__anon1::DynamicHostTransform	file:
+ID	DynamicHostTransform.cpp	/^char DynamicHostTransform::ID = 0;$/;"	m	class:DynamicHostTransform	file:
+INDEX_AXIS_BIDX	DynamicHostTransform.cpp	/^  INDEX_AXIS_BIDX,$/;"	e	enum:__anon1::IndexAxisType	file:
+INDEX_AXIS_BIDY	DynamicHostTransform.cpp	/^  INDEX_AXIS_BIDY,$/;"	e	enum:__anon1::IndexAxisType	file:
+INDEX_AXIS_BIDZ	DynamicHostTransform.cpp	/^  INDEX_AXIS_BIDZ,$/;"	e	enum:__anon1::IndexAxisType	file:
+INDEX_AXIS_LOOPVAR	DynamicHostTransform.cpp	/^  INDEX_AXIS_LOOPVAR,$/;"	e	enum:__anon1::IndexAxisType	file:
+INDEX_AXIS_MAX	DynamicHostTransform.cpp	/^  INDEX_AXIS_MAX,$/;"	e	enum:__anon1::IndexAxisType	file:
+IfIDToCondMap	DynamicHostTransform.cpp	/^std::map<unsigned, std::vector<std::string>> IfIDToCondMap;$/;"	m	namespace:__anon1	file:
+IndexAxis	DynamicHostTransform.cpp	/^  IndexAxisType IndexAxis;$/;"	m	struct:__anon1::IndexAxisMultiplier	file:
+IndexAxisConstants	DynamicHostTransform.cpp	/^  std::vector<unsigned> IndexAxisConstants; \/\/ (INDEX_AXIS_MAX);$/;"	m	struct:__anon1::AllocationStruct	file:
+IndexAxisMultiplier	DynamicHostTransform.cpp	/^struct IndexAxisMultiplier {$/;"	s	namespace:__anon1	file:
+IndexAxisType	DynamicHostTransform.cpp	/^enum IndexAxisType {$/;"	g	namespace:__anon1	file:
+IndexAxisTypeToString	DynamicHostTransform.cpp	/^std::map<IndexAxisType, std::string> IndexAxisTypeToString = {$/;"	m	namespace:__anon1	file:
+KernelArgToStoreMap	DynamicHostTransform.cpp	/^std::map<Value *, std::vector<Value *>> KernelArgToStoreMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationID	DynamicHostTransform.cpp	/^static unsigned KernelInvocationID = 1;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAccessIDToAccessDensity	DynamicHostTransform.cpp	/^    KernelInvocationToAccessIDToAccessDensity;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAccessIDToPartDiff_bidx	DynamicHostTransform.cpp	/^    KernelInvocationToAccessIDToPartDiff_bidx;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAccessIDToPartDiff_bidy	DynamicHostTransform.cpp	/^    KernelInvocationToAccessIDToPartDiff_bidy;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAccessIDToPartDiff_looparg	DynamicHostTransform.cpp	/^    KernelInvocationToAccessIDToPartDiff_looparg;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAccessIDToPartDiff_phi	DynamicHostTransform.cpp	/^    KernelInvocationToAccessIDToPartDiff_phi;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAccessIDToWSS	DynamicHostTransform.cpp	/^    KernelInvocationToAccessIDToWSS;$/;"	m	namespace:__anon1	file:
+KernelInvocationToAllocationArgNumberToKernelArgMap	DynamicHostTransform.cpp	/^    KernelInvocationToAllocationArgNumberToKernelArgMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToArgNumberToActualArgMap	DynamicHostTransform.cpp	/^    KernelInvocationToArgNumberToActualArgMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToArgNumberToAllocationMap	DynamicHostTransform.cpp	/^    KernelInvocationToArgNumberToAllocationMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToArgNumberToConstantMap	DynamicHostTransform.cpp	/^    KernelInvocationToArgNumberToConstantMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToArgNumberToLIVMap	DynamicHostTransform.cpp	/^    KernelInvocationToArgNumberToLIVMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToArgNumberToLastStoreMap	DynamicHostTransform.cpp	/^    KernelInvocationToArgNumberToLastStoreMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToBlockSizeMap	DynamicHostTransform.cpp	/^    KernelInvocationToBlockSizeMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToEnclosingFunction	DynamicHostTransform.cpp	/^std::map<Instruction *, Function *> KernelInvocationToEnclosingFunction;$/;"	m	namespace:__anon1	file:
+KernelInvocationToEnclosingLIVMap	DynamicHostTransform.cpp	/^std::map<Instruction *, Instruction *> KernelInvocationToEnclosingLIVMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToEnclosingLoopPredMap	DynamicHostTransform.cpp	/^std::map<Instruction *, Instruction *> KernelInvocationToEnclosingLoopPredMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToGridDimXYValueMap	DynamicHostTransform.cpp	/^std::map<Instruction *, Value *> KernelInvocationToGridDimXYValueMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToGridDimZValueMap	DynamicHostTransform.cpp	/^std::map<Instruction *, Value *> KernelInvocationToGridDimZValueMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToGridSizeMap	DynamicHostTransform.cpp	/^    KernelInvocationToGridSizeMap; \/\/ when grid size is constant$/;"	m	namespace:__anon1	file:
+KernelInvocationToGridSizeValueMap	DynamicHostTransform.cpp	/^    KernelInvocationToGridSizeValueMap; \/\/ when grid size is variable$/;"	m	namespace:__anon1	file:
+KernelInvocationToInsertionPointMap	DynamicHostTransform.cpp	/^std::map<Instruction*, Instruction*> KernelInvocationToInsertionPointMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToInvocationIDMap	DynamicHostTransform.cpp	/^std::map<Instruction*, unsigned> KernelInvocationToInvocationIDMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToIterMap	DynamicHostTransform.cpp	/^std::map<Instruction *, unsigned long> KernelInvocationToIterMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToKernArgToAllocationMap	DynamicHostTransform.cpp	/^    KernelInvocationToKernArgToAllocationMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToLIVToArgNumMap	DynamicHostTransform.cpp	/^    KernelInvocationToLIVToArgNumMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToStepsMap	DynamicHostTransform.cpp	/^std::map<Instruction *, unsigned long> KernelInvocationToStepsMap;$/;"	m	namespace:__anon1	file:
+KernelInvocationToStructMap	DynamicHostTransform.cpp	/^std::map<Instruction *, Value *> KernelInvocationToStructMap;$/;"	m	namespace:__anon1	file:
+KernelLaunchIsIterative	DynamicHostTransform.cpp	/^std::map<Value *, bool> KernelLaunchIsIterative;$/;"	m	namespace:__anon1	file:
+KernelLaunches	DynamicHostTransform.cpp	/^std::set<Value *> KernelLaunches;$/;"	m	namespace:__anon1	file:
+KernelNameToAccessIDToAdvancedExpressionTreeMap	DynamicHostTransform.cpp	/^    KernelNameToAccessIDToAdvancedExpressionTreeMap;$/;"	m	namespace:__anon1	file:
+KernelNameToAccessIDToAllocationArgMap	DynamicHostTransform.cpp	/^    KernelNameToAccessIDToAllocationArgMap;$/;"	m	namespace:__anon1	file:
+KernelNameToAccessIDToEnclosingLoopMap	DynamicHostTransform.cpp	/^    KernelNameToAccessIDToEnclosingLoopMap;$/;"	m	namespace:__anon1	file:
+KernelNameToAccessIDToExpressionTreeMap	DynamicHostTransform.cpp	/^    KernelNameToAccessIDToExpressionTreeMap;$/;"	m	namespace:__anon1	file:
+KernelNameToAccessIDToIfCondMap	DynamicHostTransform.cpp	/^    KernelNameToAccessIDToIfCondMap;$/;"	m	namespace:__anon1	file:
+KernelNameToAccessIDToIfTypeMap	DynamicHostTransform.cpp	/^    KernelNameToAccessIDToIfTypeMap;$/;"	m	namespace:__anon1	file:
+KernelParamReuseInKernel	DynamicHostTransform.cpp	/^    KernelParamReuseInKernel;$/;"	m	namespace:__anon1	file:
+KernelParamUsageInKernel	DynamicHostTransform.cpp	/^    KernelParamUsageInKernel;$/;"	m	namespace:__anon1	file:
+LIVTOInsertionPointMap	DynamicHostTransform.cpp	/^std::map<Instruction *, Instruction *> LIVTOInsertionPointMap;$/;"	m	namespace:__anon1	file:
+ListOfLocallyDefinedFunctions	DynamicHostTransform.cpp	/^std::set<Function *> ListOfLocallyDefinedFunctions;$/;"	m	namespace:__anon1	file:
+LoopIDToBoundsExprMapFin	DynamicHostTransform.cpp	/^    LoopIDToBoundsExprMapFin;$/;"	m	namespace:__anon1	file:
+LoopIDToBoundsExprMapIn	DynamicHostTransform.cpp	/^    LoopIDToBoundsExprMapIn;$/;"	m	namespace:__anon1	file:
+LoopIDToBoundsExprMapStep	DynamicHostTransform.cpp	/^    LoopIDToBoundsExprMapStep;$/;"	m	namespace:__anon1	file:
+LoopIDToBoundsMapFin	DynamicHostTransform.cpp	/^std::map<std::string, std::map<unsigned, unsigned>> LoopIDToBoundsMapFin;$/;"	m	namespace:__anon1	file:
+LoopIDToBoundsMapIn	DynamicHostTransform.cpp	/^std::map<std::string, std::map<unsigned, unsigned>> LoopIDToBoundsMapIn;$/;"	m	namespace:__anon1	file:
+LoopIDToBoundsMapStep	DynamicHostTransform.cpp	/^std::map<std::string, std::map<unsigned, unsigned>> LoopIDToBoundsMapStep;$/;"	m	namespace:__anon1	file:
+LoopIDToLoopBoundsMap	DynamicHostTransform.cpp	/^std::map<std::string, std::map<unsigned, std::vector<std::string>>> LoopIDToLoopBoundsMap;$/;"	m	namespace:__anon1	file:
+LoopIDToLoopItersMap	DynamicHostTransform.cpp	/^std::map<std::string, std::map<unsigned, unsigned>> LoopIDToLoopItersMap;$/;"	m	namespace:__anon1	file:
+LoopIDToParentLoopIDMap	DynamicHostTransform.cpp	/^std::map<unsigned, unsigned> LoopIDToParentLoopIDMap; \/\/ loop IDs are unique across kernels$/;"	m	namespace:__anon1	file:
+MIN_ALLOC_PERC	DynamicHostTransform.cpp	/^double MIN_ALLOC_PERC = 6;$/;"	v
+MallocPointerStructToIndexToSizeMap	DynamicHostTransform.cpp	/^    MallocPointerStructToIndexToSizeMap;$/;"	m	namespace:__anon1	file:
+MallocPointerToSizeMap	DynamicHostTransform.cpp	/^std::map<Value *, unsigned long int> MallocPointerToSizeMap;$/;"	m	namespace:__anon1	file:
+MallocPointers	DynamicHostTransform.cpp	/^std::set<Value *> MallocPointers;$/;"	m	namespace:__anon1	file:
+MallocSizeMap	DynamicHostTransform.cpp	/^std::map<Value *, unsigned long int> MallocSizeMap;$/;"	m	namespace:__anon1	file:
+MemcpyOpForStructs	DynamicHostTransform.cpp	/^std::set<Instruction *> MemcpyOpForStructs;$/;"	m	namespace:__anon1	file:
+MemcpyOpForStructsDstToInstMap	DynamicHostTransform.cpp	/^std::map<Value *, Instruction *> MemcpyOpForStructsDstToInstMap;$/;"	m	namespace:__anon1	file:
+MemcpyOpForStructsSrcToInstMap	DynamicHostTransform.cpp	/^std::map<Value *, Instruction *> MemcpyOpForStructsSrcToInstMap;$/;"	m	namespace:__anon1	file:
+Multiplier	DynamicHostTransform.cpp	/^  int Multiplier;$/;"	m	struct:__anon1::IndexAxisMultiplier	file:
+OriginalPointers	DynamicHostTransform.cpp	/^std::set<Value *> OriginalPointers;$/;"	m	namespace:__anon1	file:
+PhiNodeToLoopIDMap	DynamicHostTransform.cpp	/^std::map<unsigned, unsigned> PhiNodeToLoopIDMap; \/\/ phi node to nearest enclosing loop, if any$/;"	m	namespace:__anon1	file:
+PointerOpToOriginalConstant	DynamicHostTransform.cpp	/^std::map<Value *, unsigned> PointerOpToOriginalConstant;$/;"	m	namespace:__anon1	file:
+PointerOpToOriginalPointers	DynamicHostTransform.cpp	/^std::map<Value *, Value *> PointerOpToOriginalPointers;$/;"	m	namespace:__anon1	file:
+PointerOpToOriginalStructPointer	DynamicHostTransform.cpp	/^std::map<Value *, Value *> PointerOpToOriginalStructPointer;$/;"	m	namespace:__anon1	file:
+PointerOpToOriginalStructPointersIndex	DynamicHostTransform.cpp	/^std::map<Value *, unsigned> PointerOpToOriginalStructPointersIndex;$/;"	m	namespace:__anon1	file:
+PrefetchIters	DynamicHostTransform.cpp	/^  unsigned long long PrefetchIters, PrefetchSize;$/;"	m	struct:__anon1::SubAllocationStruct	file:
+PrefetchSize	DynamicHostTransform.cpp	/^  unsigned long long PrefetchIters, PrefetchSize;$/;"	m	struct:__anon1::SubAllocationStruct	file:
+Size	DynamicHostTransform.cpp	/^  unsigned long long Size;$/;"	m	struct:__anon1::AllocationStruct	file:
+Size	DynamicHostTransform.cpp	/^  unsigned long long StartIndex, Size;$/;"	m	struct:__anon1::SubAllocationStruct	file:
+StartIndex	DynamicHostTransform.cpp	/^  unsigned long long StartIndex, Size;$/;"	m	struct:__anon1::SubAllocationStruct	file:
+StringToBlockSizeType	DynamicHostTransform.cpp	/^std::map<std::string, BlockSizeType> StringToBlockSizeType = {$/;"	m	namespace:__anon1	file:
+StringToIndexAxisType	DynamicHostTransform.cpp	/^std::map<std::string, IndexAxisType> StringToIndexAxisType = {$/;"	m	namespace:__anon1	file:
+StructAllocas	DynamicHostTransform.cpp	/^std::set<Value *> StructAllocas;$/;"	m	namespace:__anon1	file:
+StructAllocasToIndexToValuesMap	DynamicHostTransform.cpp	/^    StructAllocasToIndexToValuesMap;$/;"	m	namespace:__anon1	file:
+SubAllocationStruct	DynamicHostTransform.cpp	/^struct SubAllocationStruct {$/;"	s	namespace:__anon1	file:
+SubAllocations	DynamicHostTransform.cpp	/^  std::vector<SubAllocationStruct *> SubAllocations;$/;"	m	struct:__anon1::AllocationStruct	file:
+TerminalValues	DynamicHostTransform.cpp	/^std::set<Value *> TerminalValues;$/;"	m	namespace:__anon1	file:
+VisitedCallInstForPointerPropogation	DynamicHostTransform.cpp	/^std::set<CallBase *> VisitedCallInstForPointerPropogation;$/;"	m	namespace:__anon1	file:
+addCodeToAddInvocationID	DynamicHostTransform.cpp	/^  void addCodeToAddInvocationID(CallBase *CI, unsigned InvocationID) {$/;"	f	struct:__anon1::DynamicHostTransform
+allocationSorter	DynamicHostTransform.cpp	/^bool allocationSorter(AllocationStruct const &Lhs,$/;"	f	namespace:__anon1
+analyzePointerPropogation	DynamicHostTransform.cpp	/^  void analyzePointerPropogation(Module &M) {$/;"	f	struct:__anon1::DynamicHostTransform
+analyzePointerPropogationRecursive	DynamicHostTransform.cpp	/^  void analyzePointerPropogationRecursive(CallBase *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+arg	DynamicHostTransform.cpp	/^  unsigned arg;$/;"	m	struct:__anon1::ExprTreeNode	file:
+arg	DynamicHostTransform.cpp	/^  unsigned arg;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	file:
+castToDouble	DynamicHostTransform.cpp	/^  Value *castToDouble(Instruction *Location, Value *val) {$/;"	f	struct:__anon1::DynamicHostTransform
+children	DynamicHostTransform.cpp	/^  std::vector<ExprTreeNodeAdvanced*> children;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	file:
+children	DynamicHostTransform.cpp	/^  struct ExprTreeNode *children[2];$/;"	m	struct:__anon1::ExprTreeNode	typeref:struct:__anon1::ExprTreeNode::ExprTreeNode	file:
+collectNodesWithParticularExprTreeOp	DynamicHostTransform.cpp	/^  void *collectNodesWithParticularExprTreeOp(ExprTreeNode *Node,$/;"	f	struct:__anon1::DynamicHostTransform
+computePerIterationIncrementForTerminalPhi	DynamicHostTransform.cpp	/^  Value* computePerIterationIncrementForTerminalPhi(Instruction* Location,$/;"	f	struct:__anon1::DynamicHostTransform
+computeSubExpression	DynamicHostTransform.cpp	/^  Value* computeSubExpression(Instruction* Location, CallBase* CI,$/;"	f	struct:__anon1::DynamicHostTransform
+containsGivenArgOp	DynamicHostTransform.cpp	/^  bool containsGivenArgOp(ExprTreeNode *Root, unsigned argnum) {$/;"	f	struct:__anon1::DynamicHostTransform
+createExpressionTree	DynamicHostTransform.cpp	/^  ExprTreeNode *createExpressionTree(std::vector<std::string> RPN) {$/;"	f	struct:__anon1::DynamicHostTransform
+createExpressionTreeAdvanced	DynamicHostTransform.cpp	/^  ExprTreeNodeAdvanced* createExpressionTreeAdvanced(std::vector<std::string> serializedTree){$/;"	f	struct:__anon1::DynamicHostTransform
+doOperationOnNodes	DynamicHostTransform.cpp	/^  ExprTreeNode *doOperationOnNodes(ExprTreeOp Op, ExprTreeNode *Left,$/;"	f	struct:__anon1::DynamicHostTransform
+estimateWorkingSetSize	DynamicHostTransform.cpp	/^  Value *estimateWorkingSetSize(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+estimateWorkingSetSize	DynamicHostTransform.cpp	/^  Value *estimateWorkingSetSize(Instruction *Location, Value *Pointer,$/;"	f	struct:__anon1::DynamicHostTransform
+estimateWorkingSetSizeAdvanced	DynamicHostTransform.cpp	/^  Value *estimateWorkingSetSizeAdvanced(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+estimateWorkingSetSizeIteration	DynamicHostTransform.cpp	/^  Value *estimateWorkingSetSizeIteration(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+evaluateExpressionTree	DynamicHostTransform.cpp	/^  unsigned long long evaluateExpressionTree(CallBase *CI, ExprTreeNode *root) {$/;"	f	struct:__anon1::DynamicHostTransform
+evaluateRPN	DynamicHostTransform.cpp	/^  unsigned long long evaluateRPN(CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+evaluateRPNForIter0	DynamicHostTransform.cpp	/^  long long evaluateRPNForIter0(CallBase *CI, std::vector<Value *> RPN) {$/;"	f	struct:__anon1::DynamicHostTransform
+evaluateRPNforMax	DynamicHostTransform.cpp	/^  unsigned long long evaluateRPNforMax(CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+evaluateRPNforMin	DynamicHostTransform.cpp	/^  unsigned long long evaluateRPNforMin(CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+extractArgsFromFunctionCallSites	DynamicHostTransform.cpp	/^  void extractArgsFromFunctionCallSites(CallBase *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+extractArgsFromFunctionDefinition	DynamicHostTransform.cpp	/^  void extractArgsFromFunctionDefinition(Function &F) {$/;"	f	struct:__anon1::DynamicHostTransform
+findAndAddLocalFunction	DynamicHostTransform.cpp	/^  void findAndAddLocalFunction(Module &M) {$/;"	f	struct:__anon1::DynamicHostTransform
+findDivisorsByTraversingUpExprTree	DynamicHostTransform.cpp	/^  findDivisorsByTraversingUpExprTree(ExprTreeNode *root,$/;"	f	struct:__anon1::DynamicHostTransform
+findKernelStructLocationForStoreInstruction	DynamicHostTransform.cpp	/^  int findKernelStructLocationForStoreInstruction(StoreInst *SI) {$/;"	f	struct:__anon1::DynamicHostTransform
+findMultipliersByTraversingUpExprTree	DynamicHostTransform.cpp	/^  findMultipliersByTraversingUpExprTree(ExprTreeNode *root,$/;"	f	struct:__anon1::DynamicHostTransform
+findNodeInExpressionTree	DynamicHostTransform.cpp	/^  ExprTreeNode *findNodeInExpressionTree(ExprTreeNode *root, ExprTreeOp op,$/;"	f	struct:__anon1::DynamicHostTransform
+findStoreInstOrStackCopyWithGivenValueOperand	DynamicHostTransform.cpp	/^  Value *findStoreInstOrStackCopyWithGivenValueOperand(Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+findStoreInstWithGivenPointerOperand	DynamicHostTransform.cpp	/^  StoreInst *findStoreInstWithGivenPointerOperand(Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+findStoreInstWithGivenValueOperand	DynamicHostTransform.cpp	/^  StoreInst *findStoreInstWithGivenValueOperand(Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+findValueForStoreInstruction	DynamicHostTransform.cpp	/^  Value *findValueForStoreInstruction(StoreInst *SI) {$/;"	f	struct:__anon1::DynamicHostTransform
+getActualHostValueForLiterals	DynamicHostTransform.cpp	/^  unsigned getActualHostValueForLiterals(CallBase *CI, ExprTreeNode *node) {$/;"	f	struct:__anon1::DynamicHostTransform
+getAllocationSize	DynamicHostTransform.cpp	/^  unsigned long int getAllocationSize(CallBase *CI, unsigned argid) {$/;"	f	struct:__anon1::DynamicHostTransform
+getAllocationSize	DynamicHostTransform.cpp	/^  unsigned long int getAllocationSize(Value *PointerOp) {$/;"	f	struct:__anon1::DynamicHostTransform
+getEnclosingLoopInductionVariable	DynamicHostTransform.cpp	/^  Instruction *getEnclosingLoopInductionVariable(Instruction *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+getEnclosingLoopPreheaderFirst	DynamicHostTransform.cpp	/^  Instruction *getEnclosingLoopPreheaderFirst(Instruction *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+getExprTreeNodeArg	DynamicHostTransform.cpp	/^  unsigned getExprTreeNodeArg(std::string op) { return stoi(op.substr(3)); }$/;"	f	struct:__anon1::DynamicHostTransform
+getExprTreeOp	DynamicHostTransform.cpp	/^  ExprTreeOp getExprTreeOp(std::string op) {$/;"	f	struct:__anon1::DynamicHostTransform
+getExprTreePhiArg	DynamicHostTransform.cpp	/^  unsigned getExprTreePhiArg(std::string op) { return stoi(op.substr(3)); }$/;"	f	struct:__anon1::DynamicHostTransform
+getExpressionTree	DynamicHostTransform.cpp	/^  std::vector<Value *> getExpressionTree(Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+getMaxValueForLiterals	DynamicHostTransform.cpp	/^  unsigned getMaxValueForLiterals(CallBase *CI, ExprTreeNode *node,$/;"	f	struct:__anon1::DynamicHostTransform
+getMinValueForLiterals	DynamicHostTransform.cpp	/^  unsigned getMinValueForLiterals(CallBase *CI, ExprTreeNode *node,$/;"	f	struct:__anon1::DynamicHostTransform
+getOriginalKernelName	DynamicHostTransform.cpp	/^  std::string getOriginalKernelName(std::string Mangledname) {$/;"	f	struct:__anon1::DynamicHostTransform
+getPartDiff_bidx	DynamicHostTransform.cpp	/^  llvm::Value *getPartDiff_bidx(Instruction *Location, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+getPartDiff_bidy	DynamicHostTransform.cpp	/^  llvm::Value *getPartDiff_bidy(Instruction *Location, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+getPartDiff_phi	DynamicHostTransform.cpp	/^  llvm::Value *getPartDiff_phi(Instruction *Location, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+gridSizeIsIterationIndependent	DynamicHostTransform.cpp	/^  bool gridSizeIsIterationIndependent(CallBase *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+identifyIterationDependentAccesses	DynamicHostTransform.cpp	/^  void identifyIterationDependentAccesses($/;"	f	struct:__anon1::DynamicHostTransform
+identifyIterative	DynamicHostTransform.cpp	/^  bool identifyIterative(CallBase *CI, LoopInfo &LI, ScalarEvolution &SE) {$/;"	f	struct:__anon1::DynamicHostTransform
+identifyMaxForUnknows	DynamicHostTransform.cpp	/^  void identifyMaxForUnknows(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+identifyMaxForUnknowsAdvanced	DynamicHostTransform.cpp	/^  void identifyMaxForUnknowsAdvanced(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+identifyMinForUnknows	DynamicHostTransform.cpp	/^  void identifyMinForUnknows(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+identifyMinForUnknowsAdvanced	DynamicHostTransform.cpp	/^  void identifyMinForUnknowsAdvanced(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+identifyUnknownsFromExpressionTree	DynamicHostTransform.cpp	/^  void identifyUnknownsFromExpressionTree($/;"	f	struct:__anon1::DynamicHostTransform
+identifyUnknownsFromExpressionTreeAdvanced	DynamicHostTransform.cpp	/^  void identifyUnknownsFromExpressionTreeAdvanced($/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeComputeLoopIterationCountNested	DynamicHostTransform.cpp	/^  Value* insertCodeComputeLoopIterationCountNested($/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeForFirstIterationExecution	DynamicHostTransform.cpp	/^  llvm::Instruction *insertCodeForFirstIterationExecution(Instruction *Location,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeForIterationDecision	DynamicHostTransform.cpp	/^  llvm::Instruction *insertCodeForIterationDecision(Instruction *Location, Instruction* LIV) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddAIDToInvocationID	DynamicHostTransform.cpp	/^  void insertCodeToAddAIDToInvocationID(Instruction *Location, unsigned aid,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddAccessCount	DynamicHostTransform.cpp	/^  void insertCodeToAddAccessCount(Instruction *Location, unsigned aid, Value *P, Value *S) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddAccessCountPerAccess	DynamicHostTransform.cpp	/^  void insertCodeToAddAccessCountPerAccess(CallBase *CI, unsigned aid,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddPDBIDX	DynamicHostTransform.cpp	/^  void insertCodeToAddPDBIDX(Instruction *Location, Value *P, Value *S) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddPDBIDY	DynamicHostTransform.cpp	/^  void insertCodeToAddPDBIDY(Instruction *CI, Value *P, Value *S) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddPDPhi	DynamicHostTransform.cpp	/^  void insertCodeToAddPDPhi(Instruction *CI, Value *P, Value *S) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddWSS	DynamicHostTransform.cpp	/^  void insertCodeToAddWSS(Instruction *Location, Value *P, Value *S) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToAddWSS_iterdep	DynamicHostTransform.cpp	/^  void insertCodeToAddWSS_iterdep(Instruction* Location, unsigned aid, Value* wss) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToCastInt32ToInt64	DynamicHostTransform.cpp	/^  Value *insertCodeToCastInt32ToInt64(Instruction *Location, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToComputeAccessDensity	DynamicHostTransform.cpp	/^  void insertCodeToComputeAccessDensity(Instruction* Location,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToComputeConditionalExecutionProbability	DynamicHostTransform.cpp	/^  void insertCodeToComputeConditionalExecutionProbability($/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToComputeKernelLoopIterationCount	DynamicHostTransform.cpp	/^  void insertCodeToComputeKernelLoopIterationCount($/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToComputePartDiff_bidx	DynamicHostTransform.cpp	/^  llvm::Value *insertCodeToComputePartDiff_bidx(Instruction* Location, CallBase *CI, Value *Allocation,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToComputePartDiff_bidy	DynamicHostTransform.cpp	/^  llvm::Value *insertCodeToComputePartDiff_bidy(Instruction* Location, CallBase *CI, Value *Allocation,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToComputePartDiff_phi	DynamicHostTransform.cpp	/^  llvm::Value *insertCodeToComputePartDiff_phi(Instruction* Location, CallBase *CI, Value *Allocation,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToEstimateMaxValue	DynamicHostTransform.cpp	/^  insertCodeToEstimateMaxValue(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToEstimateMaxValueAdvanced	DynamicHostTransform.cpp	/^  insertCodeToEstimateMaxValueAdvanced(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToEstimateMinValue	DynamicHostTransform.cpp	/^  Value *insertCodeToEstimateMinValue($/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToEstimateMinValueAdvanced	DynamicHostTransform.cpp	/^  Value *insertCodeToEstimateMinValueAdvanced($/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToGetAccessCount	DynamicHostTransform.cpp	/^  Value *insertCodeToGetAccessCount(CallBase *CI, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToGetAccessDensity	DynamicHostTransform.cpp	/^  Value *insertCodeToGetAccessDensity(CallBase *CI, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToGetMemorySize	DynamicHostTransform.cpp	/^  Value *insertCodeToGetMemorySize(CallBase *CI, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToMultiplyInt64	DynamicHostTransform.cpp	/^  Value* insertCodeToMultiplyInt64(Instruction* Location, Value* V1, Value* V2) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPenguinSuperPrefetch	DynamicHostTransform.cpp	/^  void insertCodeToPenguinSuperPrefetch(Instruction *Location) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPerformGlobalMemoryMgmt	DynamicHostTransform.cpp	/^  Instruction* insertCodeToPerformGlobalMemoryMgmt(Instruction *Location) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPerformInvocationMemoryMgmt	DynamicHostTransform.cpp	/^  void insertCodeToPerformInvocationMemoryMgmt(Instruction *Location, CallBase  *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPerformMemoryMgmtIteration	DynamicHostTransform.cpp	/^  Instruction *insertCodeToPerformMemoryMgmtIteration(Instruction *Location,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintAddress	DynamicHostTransform.cpp	/^  void insertCodeToPrintAddress(CallBase *CI, Value *P) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintGenericFloat32	DynamicHostTransform.cpp	/^  void insertCodeToPrintGenericFloat32(Instruction *CI, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintGenericFloat64	DynamicHostTransform.cpp	/^  void insertCodeToPrintGenericFloat64(Instruction *CI, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintGenericInt32	DynamicHostTransform.cpp	/^  void insertCodeToPrintGenericInt32(Instruction *CI, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintGenericInt64	DynamicHostTransform.cpp	/^  void insertCodeToPrintGenericInt64(Instruction *CI, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintNumThreads	DynamicHostTransform.cpp	/^  Value *insertCodeToPrintNumThreads(Instruction* Location,$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToPrintSize	DynamicHostTransform.cpp	/^  void insertCodeToPrintSize(CallBase *CI, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToProcessWSS_iterdep	DynamicHostTransform.cpp	/^  void insertCodeToProcessWSS_iterdep(Instruction* Location) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToRecordMalloc	DynamicHostTransform.cpp	/^  void insertCodeToRecordMalloc(CallBase *CI, Value *P, Value *S) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertCodeToShift1By	DynamicHostTransform.cpp	/^  Value *insertCodeToShift1By(Instruction *Location, Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertComparisonNode	DynamicHostTransform.cpp	/^  Value *insertComparisonNode(Instruction *Location, Value *Src1, Value *Src2,$/;"	f	struct:__anon1::DynamicHostTransform
+insertComputationNode	DynamicHostTransform.cpp	/^  Value *insertComputationNode(Instruction *Location, Value *Src1, Value *Src2,$/;"	f	struct:__anon1::DynamicHostTransform
+insertComputationNodeAdvanced	DynamicHostTransform.cpp	/^  Value *insertComputationNodeAdvanced(Instruction *Location, Value *Src1, Value *Src2,$/;"	f	struct:__anon1::DynamicHostTransform
+insertConstantNode	DynamicHostTransform.cpp	/^  Value *insertConstantNode(Instruction *Location, ExprTreeNode *Node) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertConstantNode	DynamicHostTransform.cpp	/^  Value *insertConstantNode(Instruction *Location, ExprTreeNodeAdvanced *Node) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertConstantNode	DynamicHostTransform.cpp	/^  Value *insertConstantNode(Instruction *Location, unsigned long long value) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertConstantNode	DynamicHostTransform.cpp	/^  Value *insertConstantNode(Instruction *Location, unsigned value) {$/;"	f	struct:__anon1::DynamicHostTransform
+insertIfProbEvalCode	DynamicHostTransform.cpp	/^  Value * insertIfProbEvalCode(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertLoopItersEvaluationCode	DynamicHostTransform.cpp	/^  Value * insertLoopItersEvaluationCode(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertMaximumOfTwo	DynamicHostTransform.cpp	/^  Instruction *insertMaximumOfTwo(Instruction *Location,$/;"	f	struct:__anon1::DynamicHostTransform
+insertMinimumOfTwo	DynamicHostTransform.cpp	/^  Instruction *insertMinimumOfTwo(Instruction *Location,$/;"	f	struct:__anon1::DynamicHostTransform
+insertTreeEvaluationCode	DynamicHostTransform.cpp	/^  Value *insertTreeEvaluationCode(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertTreeEvaluationCodeAdvanced	DynamicHostTransform.cpp	/^  Value *insertTreeEvaluationCodeAdvanced(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertTreeEvaluationCodeForPhi	DynamicHostTransform.cpp	/^  Value* insertTreeEvaluationCodeForPhi(Instruction* Location, CallBase* CI,$/;"	f	struct:__anon1::DynamicHostTransform
+insertTreeEvaluationCodeUsingCoeffecientVectors	DynamicHostTransform.cpp	/^  Value *insertTreeEvaluationCodeUsingCoeffecientVectors($/;"	f	struct:__anon1::DynamicHostTransform
+isDependentOn	DynamicHostTransform.cpp	/^  bool isDependentOn(llvm::Value *V, llvm::Value *W) {$/;"	f	struct:__anon1::DynamicHostTransform
+isNumber	DynamicHostTransform.cpp	/^  bool isNumber(std::string op) {$/;"	f	struct:__anon1::DynamicHostTransform
+isOperation	DynamicHostTransform.cpp	/^  bool isOperation(ExprTreeNode *node) {$/;"	f	struct:__anon1::DynamicHostTransform
+isOperation	DynamicHostTransform.cpp	/^  bool isOperation(ExprTreeNodeAdvanced *node) {$/;"	f	struct:__anon1::DynamicHostTransform
+isPC	DynamicHostTransform.cpp	/^  bool isPC;$/;"	m	struct:__anon1::AllocationStruct	file:
+isPhiNode	DynamicHostTransform.cpp	/^  bool isPhiNode(ExprTreeNode *node) {$/;"	f	struct:__anon1::DynamicHostTransform
+isPointerChase	DynamicHostTransform.cpp	/^  bool isPointerChase(ExprTreeNode *root) {$/;"	f	struct:__anon1::DynamicHostTransform
+isProb	DynamicHostTransform.cpp	/^  bool isProb = false;$/;"	m	struct:__anon1::ExprTreeNode	file:
+isProb	DynamicHostTransform.cpp	/^  bool isProb = false;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	file:
+isTerminal	DynamicHostTransform.cpp	/^  bool isTerminal(ExprTreeNode *node) {$/;"	f	struct:__anon1::DynamicHostTransform
+isTerminal	DynamicHostTransform.cpp	/^  bool isTerminal(ExprTreeNodeAdvanced *node) {$/;"	f	struct:__anon1::DynamicHostTransform
+locateNodeWithParticularExprTreeOp	DynamicHostTransform.cpp	/^  ExprTreeNode *locateNodeWithParticularExprTreeOp(ExprTreeNode *Node,$/;"	f	struct:__anon1::DynamicHostTransform
+mapFormalArgumentsToActualArguments	DynamicHostTransform.cpp	/^  void mapFormalArgumentsToActualArguments() {$/;"	f	struct:__anon1::DynamicHostTransform
+op	DynamicHostTransform.cpp	/^  ExprTreeOp op;$/;"	m	struct:__anon1::ExprTreeNode	file:
+op	DynamicHostTransform.cpp	/^  ExprTreeOp op;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	file:
+operate	DynamicHostTransform.cpp	/^  ExprTreeNode *operate(CallBase *CI, ExprTreeNode *operation,$/;"	f	struct:__anon1::DynamicHostTransform
+operate	DynamicHostTransform.cpp	/^  long long operate(BinaryOperator *BO, int v1, int v2) {$/;"	f	struct:__anon1::DynamicHostTransform
+operateMax	DynamicHostTransform.cpp	/^  ExprTreeNode *operateMax(CallBase *CI, ExprTreeNode *operation,$/;"	f	struct:__anon1::DynamicHostTransform
+operateMin	DynamicHostTransform.cpp	/^  ExprTreeNode *operateMin(CallBase *CI, ExprTreeNode *operation,$/;"	f	struct:__anon1::DynamicHostTransform
+operations	DynamicHostTransform.cpp	/^std::set<ExprTreeOp> operations;$/;"	m	namespace:__anon1	file:
+original_str	DynamicHostTransform.cpp	/^  std::string original_str;$/;"	m	struct:__anon1::ExprTreeNode	file:
+original_str	DynamicHostTransform.cpp	/^  std::string original_str;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	file:
+parent	DynamicHostTransform.cpp	/^  struct ExprTreeNode *parent;$/;"	m	struct:__anon1::ExprTreeNode	typeref:struct:__anon1::ExprTreeNode::ExprTreeNode	file:
+parent	DynamicHostTransform.cpp	/^  struct ExprTreeNodeAdvanced *parent;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	typeref:struct:__anon1::ExprTreeNodeAdvanced::ExprTreeNodeAdvanced	file:
+parseGridSizeArgument	DynamicHostTransform.cpp	/^  void parseGridSizeArgument(Value *GridSizeArgument, CallBase *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+parseReuseDetailFile	DynamicHostTransform.cpp	/^  void parseReuseDetailFile() {$/;"	f	struct:__anon1::DynamicHostTransform
+partialDifferenceOfExpressionTreeWRTGivenNode	DynamicHostTransform.cpp	/^  unsigned partialDifferenceOfExpressionTreeWRTGivenNode(CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+partialDifferenceWRTPhi	DynamicHostTransform.cpp	/^  unsigned long long partialDifferenceWRTPhi(CallBase *CI, ExprTreeNode *root) {$/;"	f	struct:__anon1::DynamicHostTransform
+partiallyEvaluatedLoopIters	DynamicHostTransform.cpp	/^  ExprTreeNode *partiallyEvaluatedLoopIters(Instruction *Location, CallBase *CI,$/;"	f	struct:__anon1::DynamicHostTransform
+pd_bidx	DynamicHostTransform.cpp	/^  unsigned pd_phi, pd_bidx, pd_bidy;$/;"	m	struct:__anon1::AllocationStruct	file:
+pd_bidy	DynamicHostTransform.cpp	/^  unsigned pd_phi, pd_bidx, pd_bidy;$/;"	m	struct:__anon1::AllocationStruct	file:
+pd_phi	DynamicHostTransform.cpp	/^  unsigned pd_phi, pd_bidx, pd_bidy;$/;"	m	struct:__anon1::AllocationStruct	file:
+printAccessInformation	DynamicHostTransform.cpp	/^  void printAccessInformation() {$/;"	f	struct:__anon1::DynamicHostTransform
+printExpresstionTreeAdvanced	DynamicHostTransform.cpp	/^  void printExpresstionTreeAdvanced(ExprTreeNodeAdvanced* root) {$/;"	f	struct:__anon1::DynamicHostTransform
+printKernelDeviceAnalyis	DynamicHostTransform.cpp	/^  void printKernelDeviceAnalyis() {$/;"	f	struct:__anon1::DynamicHostTransform
+printLoopInformation	DynamicHostTransform.cpp	/^  void printLoopInformation() {$/;"	f	struct:__anon1::DynamicHostTransform
+processKernelArguments	DynamicHostTransform.cpp	/^  void processKernelArguments(CallBase *I) {$/;"	f	struct:__anon1::DynamicHostTransform
+processKernelInvocation	DynamicHostTransform.cpp	/^  void processKernelInvocation(CallBase *CI) {$/;"	f	struct:__anon1::DynamicHostTransform
+processKernelShapeArguments	DynamicHostTransform.cpp	/^  void processKernelShapeArguments(Function &F) {$/;"	f	struct:__anon1::DynamicHostTransform
+processKernelSignature	DynamicHostTransform.cpp	/^  void processKernelSignature(CallBase *I) {$/;"	f	struct:__anon1::DynamicHostTransform
+processMemoryAllocation	DynamicHostTransform.cpp	/^  void processMemoryAllocation(CallBase *I) {$/;"	f	struct:__anon1::DynamicHostTransform
+recurseTillAllocation	DynamicHostTransform.cpp	/^  Value *recurseTillAllocation(Value *V) {$/;"	f	struct:__anon1::DynamicHostTransform
+recurseTillStoreOrEmtpy	DynamicHostTransform.cpp	/^  void recurseTillStoreOrEmtpy(CallBase *Invocation, Value *KernelArgStruct,$/;"	f	struct:__anon1::DynamicHostTransform
+setTerminalsAndOperations	DynamicHostTransform.cpp	/^  void setTerminalsAndOperations() {$/;"	f	struct:__anon1::DynamicHostTransform
+terminals	DynamicHostTransform.cpp	/^std::set<ExprTreeOp> terminals;$/;"	m	namespace:__anon1	file:
+traverseExpressionTree	DynamicHostTransform.cpp	/^  void traverseExpressionTree(ExprTreeNode *root) {$/;"	f	struct:__anon1::DynamicHostTransform
+traverseExpressionTree	DynamicHostTransform.cpp	/^  void traverseExpressionTree(ExprTreeNodeAdvanced *root) {$/;"	f	struct:__anon1::DynamicHostTransform
+traverseGridSizeArgument	DynamicHostTransform.cpp	/^  void traverseGridSizeArgument(Value *GridSizeArgument) {$/;"	f	struct:__anon1::DynamicHostTransform
+value	DynamicHostTransform.cpp	/^  unsigned long long value;$/;"	m	struct:__anon1::ExprTreeNode	file:
+value	DynamicHostTransform.cpp	/^  unsigned long long value;$/;"	m	struct:__anon1::ExprTreeNodeAdvanced	file:
+wss	DynamicHostTransform.cpp	/^  unsigned long long wss;$/;"	m	struct:__anon1::AllocationStruct	file:

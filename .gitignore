@@ -1,0 +1,3 @@
+llvm/build/
+open-gpu-kernel-modules/kernel-open/*.o
+open-gpu-kernel-modules/kernel-open/*.ko
