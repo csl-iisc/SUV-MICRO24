@@ -28,6 +28,12 @@ Compiling LLVM can take between 20 minutes to 2 hours, depending on the amount o
 In machines with limted memory, the linking process may fail initially (due to out of memory).
 Please run ninja again if this happens.
 
+If you only want to run SUV, a `Release` build is significantly faster and lighter:
+
+```sh
+cmake -S llvm -B build -G Ninja -DLLVM_ENABLE_PROJECTS='clang' -DCMAKE_BUILD_TYPE='Release' -DLLVM_TARGETS_TO_BUILD='X86;NVPTX'
+```
+
 
 # Compile and insert the UVM driver
 ------------------------
@@ -43,12 +49,24 @@ sudo insmod /home/pratheek/projects/accesscounter/open-gpu-kernel-modules/kernel
 sudo insmod /home/pratheek/projects/accesscounter/open-gpu-kernel-modules/kernel-open/nvidia-uvm.ko
 ```
 
+### Version Conflicts
+
+To install the required CUDA version (525.60.13) alongside an existing CUDA toolkit
+installation, please see `install_cuda.md`.
+
 # Path setting
 --------------
 
 Edit the startup.sh file to point the bin directory in LLVM.
 Source the startup.sh file add the LLVM binaries into the path.
 
+On some systems, `clang` does not include some C++ headers directly (`cmath`
+and `bits/c++config.h`).
+Set the `CPATH` environment variable, by adding this line to `startup.sh`.
+
+```sh
+export CPATH="/usr/include/c++/11/:/usr/include/x86_64-linux-gnu/c++/11:$CPATH"
+```
 # Compile the binaries
 
 Run the provided compile.sh script to compile all the workloads for all the configurations.

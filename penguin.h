@@ -139,6 +139,10 @@ std::map<void*, unsigned long long> allocation_wss_map;
 std::vector<std::pair<void*, unsigned long long>> ad_vector;
 std::vector<std::pair<void*, unsigned long long>> wss_vector;
 
+// aid: allocation ID
+// wss: working set
+// ac:  access counter
+// ad:  access density
 std::map<unsigned, unsigned long long> aid_ac_map;
 std::map<unsigned, void*> aid_allocation_map;
 std::map<unsigned, unsigned long long> aid_wss_map_iterdep;
@@ -148,6 +152,8 @@ std::map<unsigned, unsigned> aid_invocation_id_map;
 std::map<unsigned, bool> aid_ac_incomp_map;
 
 // Badly named
+
+// Map is filled ONLY via add_* functions, called from DynamicHostTransform
 std::map<unsigned, unsigned long long> aid_ac_map_reuse;
 std::map<unsigned, void*> aid_allocation_map_reuse;
 std::map<unsigned, unsigned> aid_invocation_id_map_reuse;
@@ -223,7 +229,7 @@ penguin_error_t penguinSetPrioritizedLocation(void *base, size_t length,
     int status;
 
 
-    /* std::cout << "set prioritized location " << base << std::endl; */
+    std::cout << "set prioritized location " << base << std::endl;
 
     cudaDeviceProp prop;
     cudaGetDeviceProperties(&prop, 0);
@@ -259,6 +265,7 @@ penguin_error_t penguinSetPrioritizedLocation(void *base, size_t length,
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "PENGUIN_PRIORITIZED_GPU_IOCTL_NUM @ %p %lld KB\n", base, length / 1000);
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_PRIORITIZED_GPU_IOCTL_NUM, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
@@ -278,6 +285,7 @@ penguin_error_t penguinSetQuickMigrate(void *base, size_t length,
     penguin_quick_migrate_ioctl_params request;
     int status;
 
+    fprintf(stderr, "** Inside %s @ %p for %ld KB\n", __func__, base, length/1000);
     cudaDeviceProp prop;
     cudaGetDeviceProperties(&prop, 0);
 
@@ -307,10 +315,12 @@ penguin_error_t penguinSetQuickMigrate(void *base, size_t length,
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "PENGUIN_QUICK_MIGRATE_IOCTL_NUM @ %p for %lld KB\n", base, length/1000);
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_QUICK_MIGRATE_IOCTL_NUM, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
         fprintf(stderr, "debuggy\n");
+	fprintf(stderr, "Insert the SUV driver, this is the vanilla driver\n");
         return PENGUIN_ERR_IOCTL;
     }
     return PENGUIN_OK;
@@ -327,6 +337,7 @@ penguin_error_t penguinSetNoMigrateRegion(void *base, size_t length,
     penguin_ignore_notif_ioctl_params request;
     int status;
 
+    fprintf(stderr, "** Inside %s @ %p for %ld KB\n", __func__, base, length/1000);
     cudaDeviceProp prop;
     cudaGetDeviceProperties(&prop, 0);
 
@@ -357,6 +368,7 @@ penguin_error_t penguinSetNoMigrateRegion(void *base, size_t length,
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "penguin IOCTL PENGUIN_NO_MIGRATE_IOCTL_NUM @ %p for %ld KB\n", base, length/1000);
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_NO_MIGRATE_IOCTL_NUM, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
@@ -365,6 +377,7 @@ penguin_error_t penguinSetNoMigrateRegion(void *base, size_t length,
     return PENGUIN_OK;
 }
 
+// pranjal: this calls PENGUIN_IS_ALLOCATED, can't tell why
 extern "C"
 penguin_error_t penguinPinHost(void *base, size_t length) {
 
@@ -375,6 +388,7 @@ penguin_error_t penguinPinHost(void *base, size_t length) {
     penguin_pin_host_params request;
     int status;
 
+    fprintf(stderr, "** Inside %s @ %p for %ld KB\n", __func__, base, length/1000);
     cudaDeviceProp prop;
     cudaGetDeviceProperties(&prop, 0);
 
@@ -404,6 +418,7 @@ penguin_error_t penguinPinHost(void *base, size_t length) {
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "penguinPinHost: PENGUIN_IS_ALLOCATED for %p %ld KB\n", base, length/1000);
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_IS_ALLOCATED, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
@@ -417,8 +432,10 @@ penguin_error_t penguinPinHost(void *base, size_t length) {
     return PENGUIN_OK;
 }
 
+// Dead code - used in SC, not SUV.
 extern "C"
 void penguinSuperPrefetch(void *base, size_t length, unsigned iter, unsigned iterPerBatch, size_t max) {
+    assert(0);
     /* counter++; */
     if (length == 0) return;
     if ((iter % iterPerBatch) == 0) {
@@ -450,8 +467,10 @@ void penguinSuperPrefetch(void *base, size_t length, unsigned iter, unsigned ite
     return;
 }
 
+// Dead code - used in SC, not SUV.
 extern "C"
 void penguinSuperPrefetchWrapper(unsigned iter) {
+    assert(0);
     //get parameters from runtime maps and call penguinSuperPrefetch
     /* std::cout << "penguinSuperPrefetchWrapper " << iter << "\n"; */
     for(auto memalloc = AllocationToPrefetchBoolMap.begin();
@@ -529,6 +548,7 @@ penguin_error_t penguinEnableAccessCounters() {
     penguin_enable_access_counter_param request;
     int status;
 
+    fprintf(stderr, "** Inside %s\n", __func__);
     request.enable_mimc = true;
     request.enable_momc = false;
     request.mimc_gran  = 1;
@@ -555,6 +575,8 @@ penguin_error_t penguinEnableAccessCounters() {
             {
                 sprintf(psf_path, "%s/%s", PSF_DIR, dir->d_name);
                 psf_realpath = realpath(psf_path, NULL);
+                if (psf_realpath == NULL)
+                    continue;
                 if (strcmp(psf_realpath, NVIDIA_UVM_PATH) == 0)
                     nvidia_uvm_fd = atoi(dir->d_name);
                 free(psf_realpath);
@@ -569,6 +591,7 @@ penguin_error_t penguinEnableAccessCounters() {
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "PENGUIN_ACCESS_COUNTER_ENABLE\n");
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_ACCESS_COUNTER_ENABLE, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
@@ -596,9 +619,11 @@ penguin_error_t penguinStartStatCollection() {
             if (dir->d_type == DT_LNK)
             {
                 sprintf(psf_path, "%s/%s", PSF_DIR, dir->d_name);
+		fprintf(stderr, "pranjal error 0 | args dirent %s psf_realpath %s\n", dir->d_name, psf_realpath);
                 psf_realpath = realpath(psf_path, NULL);
-                if (strcmp(psf_realpath, NVIDIA_UVM_PATH) == 0)
+                if (psf_realpath && strcmp(psf_realpath, NVIDIA_UVM_PATH) == 0)
                     nvidia_uvm_fd = atoi(dir->d_name);
+		fprintf(stderr, "pranjal error 2\n");
                 free(psf_realpath);
                 if (nvidia_uvm_fd >= 0)
                     break;
@@ -611,6 +636,7 @@ penguin_error_t penguinStartStatCollection() {
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "penguinStartStatCollection()\n");
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_START_STAT_COLLECTION_IOCTL_NUM, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
@@ -652,6 +678,7 @@ penguin_error_t penguinStopStatCollection() {
         fprintf(stderr, "Cannot open %s\n", PSF_DIR);
         return PENGUIN_ERR_PATH;
     }
+    fprintf(stderr, "PENGUIN_STOP_STAT_COLLECTION_IOCTL_NUM\n");
     if ((status = ioctl(nvidia_uvm_fd, PENGUIN_STOP_STAT_COLLECTION_IOCTL_NUM, &request)) != 0)
     {
         fprintf(stderr, "error: %d\n", status);
@@ -667,6 +694,7 @@ void add_invocation_id(unsigned invid) {
     return;
 }
 
+// This is called from DynamicHostTransform.cpp.
 // TODO: fix this ASAP
 extern "C"
 void addIntoAllocationMap(void** ptr, unsigned long long size) {
@@ -676,6 +704,7 @@ void addIntoAllocationMap(void** ptr, unsigned long long size) {
     return;
 }
 
+// This is called from DynamicHostTransform.cpp.
 extern "C"
 void printAllocationMap() {
     /* std::cout << "size map\n"; */
@@ -705,6 +734,7 @@ void printACToAllocationMap() {
     }
 }
 
+// Probably dead code.
 extern "C"
 float getAccessDensity(void* ptr) {
     return (float) allocation_ac_map[ptr] / (float) allocation_size_map[ptr];
@@ -821,8 +851,10 @@ void print_value_f64(double value) {
     /* std::cout << "value(f64) = " << value << std::endl; */
 }
 
+// Dead code.
 extern "C"
 float compute_access_density(void* ptr, unsigned numThreads, unsigned loopIters, unsigned long long size) {
+    assert(0);
     float ad = ((float)numThreads * (float)loopIters) / (float)size;
     /* std::cout << "ad is " << ad << "\n"; */
     return ad;
@@ -836,16 +868,6 @@ bool sortfuncf(std::pair<void*, float> &a,  std::pair<void*, float> &b){
     return a.second > b.second;
 }
 
-
-/* extern "C" */
-/* void sort_wss() { */
-/*   std::copy(allocation_wss_map.begin(), allocation_wss_map.end(),back_inserter<std::vector<std::pair<void*, unsigned long long> > >(wss_vector)); */
-/*   std::sort(wss_vector.begin(), wss_vector.end(), sortfunc); */
-  /* std::cout << "sorted wss\n"; */
-/*   for(auto wss = wss_vector.begin(); wss != wss_vector.end(); wss++) { */
-/*     std::cout << wss->first << " " << wss->second << "\n"; */
-/*   } */
-/* } */
 
 #define PG_SIZE (2*1024ULL*1024ULL)
 
@@ -864,6 +886,7 @@ unsigned long long estimate_working_set2(unsigned long long wss_per_tb, unsigned
     return wss_per_tb * numTBs;
 }
 
+// Probably dead code.
 extern "C"
 unsigned estimate_working_set(unsigned long long pd_bidx, unsigned long long pd_bidy, unsigned long long pd_phi, unsigned loopiters, unsigned bdimx, unsigned bdimy, unsigned gdimx, unsigned gdimy) {
     unsigned long long max = 0;
@@ -971,6 +994,7 @@ void process_all_accesses() {
 }
 
 // this function is for all non-iterative kernels (and non iteration-dependent accesses within iterative kernels)
+// does NOT call any CUDA APIs, manages these C++ maps.
 extern "C"
 void perform_memory_management_global() {
     // many maps
@@ -1193,15 +1217,16 @@ void perform_memory_management_global() {
     /* std::cout << "available = " << available << std::endl; */
 }
 
+// find iterative/temporal accesses. Call cudaMemPrefetchAsync, cudaMemAdviseSetAccessedBy
 extern "C"
 void perform_memory_management_iterative() {
-    /* std::cout << "mm iterative \n"; */
+    std::cout << "mm iterative \n";
     is_iterative = true;
-    /* std::cout << "available = " << available << std::endl; */
+    std::cout << "available = " << available << std::endl;
 
-    /* std::cout << "data from reuse\n"; */
+    std::cout << "data from reuse\n";
     for (auto a = aid_ac_map_reuse.begin(); a != aid_ac_map_reuse.end(); a++) {
-        /* std::cout << a->first << "  " << a->second << std::endl; */
+        std::cout << a->first << "  " << a->second << std::endl;
     }
     std::map<void*, unsigned long long> mmg_alloc_ac_map_iteronly;
     std::map<void*, unsigned long long> mmg_alloc_ad_map_iteronly;
@@ -1352,12 +1377,14 @@ void perform_memory_management_iterative() {
                 cudaMemPrefetchAsync((char*)a->first, available, 0, 0 );
                 available = 0;
                 /* std::cout << "cpu pin rest B\n"; */
+                dprintf(2, "penguin: cudaMemAdviseSetAccessedBy at %p for %ld B\n", ((char *)a->first + available), dsize - available);
                 cudaMemAdvise((char*) a->first + available, dsize - available, cudaMemAdviseSetAccessedBy, 0);
             }
         } else {
                 AllocationStateMap[a->first] = PENGUIN_STATE_HOST;
                 /* std::cout << "cpu pin rest B\n"; */
                 /* std::cout << available <<  std::endl; */
+                dprintf(2, "penguin: cudaMemAdviseSetAccessedBy at %p for %ld B\n", ((char *)a->first + available), dsize - available);
                 cudaMemAdvise((char*) a->first + available, dsize - available, cudaMemAdviseSetAccessedBy, 0);
         }
     }
@@ -1368,358 +1395,6 @@ void perform_memory_management_iterative() {
 
 
 }
-
-/* extern "C" */
-/* void perform_memory_management_global_og() { */
-/*     /1* return; // debuggy: quick test *1/ */
-/*     for(auto InvId = InvocationIDs.begin(); InvId != InvocationIDs.end(); InvId++){ */
-/*         InvocationIDtoDecisionBoolMap[*InvId] = false; */
-/*     } */
-/*     std::cout << "printing all aid along with allocation and ac\n"; */
-/*     for (auto a = aid_allocation_map.begin(); a != aid_allocation_map.end(); a++) { */
-/*         std::cout << a->first << " " << aid_ac_map[a->first] << " " << a->second << " "; */
-/*         std::cout << aid_ac_map[a->first] << " "; */
-/*         std::cout << allocation_size_map[aid_allocation_map[a->first]] << " "; */
-/*         std::cout << aid_invocation_id_map[a->first] << " "; */
-/*         if(aid_wss_map_iterdep.find(a->first) != aid_wss_map_iterdep.end()) { */
-/*             std::cout << " iterdep "; */
-/*             std::cout << aid_wss_map_iterdep[a->first]; */
-/*         } */
-/*         std::cout << "\n"; */
-/*     } */
-
-/*     std::map<void*, unsigned long long> mmg_alloc_ac_map_iteronly; */
-/*     std::map<void*, unsigned long long> mmg_alloc_span_map_iteronly; */
-/*     std::map<void*, unsigned long long> mmg_alloc_ad_map_iteronly; */
-/*     std::vector<std::pair<void*, unsigned long long>> mmg_alloc_ad_vector_iteronly; */
-
-/*     std::map<unsigned, std::map<void*, unsigned long long>> mmg_alloc_ac_map_invid; */
-/*     std::map<unsigned, std::map<void*, float>> mmg_alloc_ad_map_invid; */
-/*     std::map<unsigned, std::map<void*, unsigned long long>> mmg_alloc_pd_x_map_invid; */
-/*     std::map<unsigned, std::map<void*, unsigned long long>> mmg_alloc_pd_y_map_invid; */
-/*     std::map<unsigned, std::map<void*, unsigned long long>> mmg_alloc_pd_i_map_invid; */
-
-/*     for (auto a = aid_allocation_map.begin(); a != aid_allocation_map.end(); a++) { */
-/*         auto invid = aid_invocation_id_map[a->first]; */
-/*         if(aid_wss_map_iterdep.find(a->first) != aid_wss_map_iterdep.end()) { */
-/*             // check if only a fractiof of the data structure is being accesses in this access */
-/*             auto span = aid_wss_map_iterdep[a->first]; */
-/*             auto allocation = aid_allocation_map[a->first]; */
-/*             auto dsize = allocation_size_map[allocation]; */
-/*             /1* std::cout << "hi " << span << "  " << dsize << "\n"; *1/ */
-/*             float span_to_size = (float) span / (float) dsize; */
-/*             if(span_to_size < 0.05) { */
-/*                 /1* std::cout << "span is smallr than dsize significantly\n"; *1/ */
-/*                 mmg_alloc_ac_map_iteronly[a->second] += aid_ac_map[a->first]; */
-/*                 if(mmg_alloc_span_map_iteronly[a->second] < span) { */
-/*                     mmg_alloc_span_map_iteronly[a->second] = span; */
-/*                 } */
-/*             } else { */
-/*                 mmg_alloc_ac_map_invid[invid][a->second] += aid_ac_map[a->first]; */
-/*             } */
-
-/*         } else { */
-/*             /1* std::cout << aid_ac_map[a->first]; *1/ */
-/*             mmg_alloc_ac_map_invid[invid][a->second] += aid_ac_map[a->first]; */
-/*             // not an iteration dependent access */
-/*         } */
-/*     } */
-/*     std::cout << "allocation to ac map iteronly\n"; */
-/*     for(auto a = mmg_alloc_ac_map_iteronly.begin(); a != mmg_alloc_ac_map_iteronly.end(); a++) { */
-/*         auto span = mmg_alloc_span_map_iteronly[a->first]; */
-/*         std::cout << a->first << " " << a->second << " " << span << " "; */
-/*         auto ad = (float) a->second / (float) span; */
-/*         std::cout << ad  << "\n"; */
-/*         mmg_alloc_ad_map_iteronly[a->first] = ad; */
-/*     } */
-/*     std::cout << "allocation to ac map\n"; */
-/*     float max_ad_among_noniter = 0; */
-/*     for (auto mmg_alloc_ac_map_iter = mmg_alloc_ac_map_invid.begin(); */
-/*             mmg_alloc_ac_map_iter != mmg_alloc_ac_map_invid.end(); */
-/*             mmg_alloc_ac_map_iter++) { */
-/*         auto invid  = mmg_alloc_ac_map_iter->first; */
-/*         std::cout << "invid = " << mmg_alloc_ac_map_iter->first << "\n"; */
-/*         auto mmg_alloc_ac_map = mmg_alloc_ac_map_iter->second; */
-/*         for(auto a = mmg_alloc_ac_map.begin(); a != mmg_alloc_ac_map.end(); a++) { */
-/*             std::cout << a->first << " " << a->second << " "; */
-/*             auto dsize = allocation_size_map[a->first]; */
-/*             auto ad = (float) a->second / (float) dsize; */
-/*             if(ad > max_ad_among_noniter) { */
-/*                 max_ad_among_noniter = ad; */
-/*             } */
-/*             std::cout << ad  << "\n"; */
-/*             mmg_alloc_ad_map_invid[invid][a->first] = mmg_alloc_ac_map_invid[invid][a->first] / (float) dsize; */
-/*             mmg_alloc_pd_x_map_invid[invid][a->first] = allocation_pd_bidx_map[a->first]; */
-/*             mmg_alloc_pd_y_map_invid[invid][a->first] = allocation_pd_bidy_map[a->first]; */
-/*             mmg_alloc_pd_i_map_invid[invid][a->first] = allocation_pd_phi_map[a->first]; */
-/*         } */
-/*     } */
-/*     std::cout << "phase 1.5, pchase"; */
-/*     for(auto a = aid_pchase_map.begin(); a != aid_pchase_map.end(); a++) { */
-/*         if(a->second == true) { */
-/*             AllocationToPchaseMap[aid_allocation_map[a->first]] = true; */
-/*         } */
-/*     } */
-/*     std::cout << "max ad among non iter = " << max_ad_among_noniter << "\n"; */
-/*     std::cout << "phase 2, decisions for iteronly\n"; */
-/*     std::copy(mmg_alloc_ad_map_iteronly.begin(), */ 
-/*             mmg_alloc_ad_map_iteronly.end(), */
-/*             back_inserter<std::vector<std::pair<void*, unsigned long long> > >(mmg_alloc_ad_vector_iteronly)); */
-/*     std::sort(mmg_alloc_ad_vector_iteronly.begin(), */
-/*             mmg_alloc_ad_vector_iteronly.end(), sortfunc); */
-/*     std::cout << "sorted ad iteronly \n"; */
-/*     for(auto a = mmg_alloc_ad_vector_iteronly.begin(); */
-/*             a != mmg_alloc_ad_vector_iteronly.end(); a++) { */
-/*         std::cout << a->first << "  " << a->second << "\n"; */
-/*         if(a->second > max_ad_among_noniter) { */
-/*             std::cout << "will be considered; "; */
-/*             auto span = mmg_alloc_span_map_iteronly[a->first]; */
-/*             /1* auto span = 1024*1024; *1/ */
-/*             auto dsize = allocation_size_map[a->first]; */
-/*             std::cout << "span = " << span << "  "; */
-/*             auto prefetch_size = span; */
-/*             if(prefetch_size < PENGUIN_MIN_PREFETCH) { */
-/*                 prefetch_size = PENGUIN_MIN_PREFETCH; */
-/*             } */
-/*             if(prefetch_size >= dsize) { */
-/*                 prefetch_size = dsize; */
-/*             } */
-/*             std::cout << "prefetch = " << prefetch_size << "\n"; */
-/*             /1* auto prefetch_iters_per_batch = dsize/prefetch_size; *1/ */
-/*             auto prefetch_iters_per_batch = prefetch_size/span; */
-/*             std::cout << "prefetch iters per batch= " << prefetch_iters_per_batch << "\n"; */
-/*             // insert into data structures for penguinSuperPrefetch to read from */ 
-/*             AllocationToPrefetchBoolMap[a->first] = true; */
-/*             AllocationToPrefetchSizeMap[a->first] = prefetch_size * 4; */
-/*             AllocationToPrefetchItersPerBatchMap[a->first] = prefetch_iters_per_batch; */
-/*             AllocationToDecisionMap[a->first] = PENGUIN_DEC_ITERATION_MIGRATION; */
-/*             available -= prefetch_size * 4; */
-/*             std::cout << "available = " << available << "\n"; */ 
-/*         } else { */
-/*             std::cout << "will NOT be considered\n"; */
-/*         } */
-/*     } // iteronly ends here */
-/*     std::cout << "phase 3, decisions on per invocation basis, excluding iteronly\n"; */
-/*     // first phcase */
-/*     // */
-/*     unsigned long long total_size = 0; */
-/*     for (auto a = allocation_size_map.begin(); a != allocation_size_map.end(); a++) { */
-/*         total_size += a->second; */
-/*     } */
-/*     for (auto a = AllocationToPchaseMap.begin(); a != AllocationToPchaseMap.end(); a++) { */
-/*         /1* auto invid = aid_invocation_id_map[a->first]; *1/ */
-/*         for(auto invid = InvocationIDs.begin(); invid != InvocationIDs.end(); invid++){ */
-/*             InvocationIDtoAllocationToDecisionMap[*invid][a->first] = PENGUIN_DEC_ACCESS_COUNTER; */
-/*             unsigned long long psize = allocation_size_map[a->first]; */
-/*             psize = (gpu_memory * psize) / total_size ; */
-/*             available -= psize; */
-/*         } */
-/*     } */
-/*     for (auto invid = mmg_alloc_ad_map_invid.begin(); */
-/*             invid != mmg_alloc_ad_map_invid.end(); invid++) { */
-/*         std::cout << "processing invid = " << invid->first  << "\n"; */
-/*         auto mmg_alloc_ad_map = invid->second; */
-/*         std::vector<std::pair<void*, float>> mmg_alloc_ad_vector_invid; */
-/*         for(auto alloc = mmg_alloc_ad_map.begin(); */
-/*                 alloc != mmg_alloc_ad_map.end(); alloc++) { */
-/*             auto pd_x = mmg_alloc_pd_x_map_invid[invid->first][alloc->first]; */
-/*             auto pd_y = mmg_alloc_pd_y_map_invid[invid->first][alloc->first]; */
-/*             auto pd_i = mmg_alloc_pd_i_map_invid[invid->first][alloc->first]; */
-/*             std::cout << alloc->first << " " << alloc->second << " " << pd_x << " " << pd_y << " " << pd_i << "\n"; */
-/*             // be default, host pin */
-/*             InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first] = PENGUIN_DEC_NONE; */
-/*             /1* if(alloc->second < 0.25) { *1/ */
-/*             if(alloc->second <= 1) { */
-/*                 std::cout << "AD too low: ignoring or host pinning (default)\n"; */
-/*                 InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first] = PENGUIN_DEC_HOST_PIN; */
-/*             } */
-/*             auto dsize = allocation_size_map[alloc->first]; */
-/*             if((alloc->second > 5) && (allocation_wss_map[alloc->first] < 0.5 * (dsize))) { */
-/*                 std::cout << "migrate on demand " << allocation_wss_map[alloc->first]  << " " << (0.5 * dsize) << "\n"; */
-/*                 InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first] = PENGUIN_DEC_MIGRATE_ON_DEMAND; */
-/*                 InvocationIDtoAllocationToPartialSize[invid->first][alloc->first] = allocation_wss_map[alloc->first]; */
-/*             } */
-/*             if(alloc->second < 5 && (allocation_wss_map[alloc->first] < (0.5 * dsize))){ */
-/*                 InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first] = PENGUIN_DEC_HOST_PIN; */
-/*             } */
-/*             if(InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first] != PENGUIN_DEC_MIGRATE_ON_DEMAND) { */
-/*                 mmg_alloc_ad_vector_invid.push_back(std::pair<void*, float>(alloc->first, alloc->second)); */
-/*             } */
-/*             /1* } *1/ */
-/*             std::sort(mmg_alloc_ad_vector_invid.begin(), */
-/*                     mmg_alloc_ad_vector_invid.end(), sortfuncf); */
-/*             std::cout << "sorted \n"; */
-/*             unsigned locally_available = available; */
-/*             for(auto a = mmg_alloc_ad_vector_invid.begin(); */
-/*                     a != mmg_alloc_ad_vector_invid.end(); a++) { */
-/*                 std::cout << a->first << " " << a->second << "\n"; */
-/*                 if(InvocationIDtoAllocationToDecisionMap[invid->first][a->first] == PENGUIN_DEC_HOST_PIN) { */
-/*                     std::cout << "skipping already host alloced\n"; */
-/*                     continue; */
-/*                 } */
-/*                 if(locally_available) { */
-/*                     auto dsize = allocation_size_map[a->first]; */
-/*                     if(locally_available >= dsize) { */
-/*                         InvocationIDtoAllocationToDecisionMap[invid->first][a->first] = PENGUIN_DEC_GPU_PIN; */
-/*                         std::cout << "available before= " << locally_available << "\n"; */ 
-/*                         locally_available -= dsize; */
-/*                         std::cout << "gpu pin\n"; */
-/*                         std::cout << "locally available = " << locally_available << "\n"; */ 
-/*                     } else if(locally_available > 0) { */
-/*                         auto amount = locally_available; */
-/*                         InvocationIDtoAllocationToDecisionMap[invid->first][a->first] = PENGUIN_DEC_GPU_HOST_PARTIAL_PIN; */
-/*                         InvocationIDtoAllocationToPartialSize[invid->first][a->first] = amount; */
-/*                         std::cout << "available before= " << locally_available << "\n"; */ 
-/*                         locally_available = locally_available - amount; */
-/*                         std::cout << "gpu host partial pin\n"; */
-/*                         std::cout << "locally available after = " << locally_available << "\n"; */ 
-/*                     } else { */
-/*                         InvocationIDtoAllocationToDecisionMap[invid->first][a->first] = PENGUIN_DEC_HOST_PIN; */
-/*                         std::cout << "host pin\n"; */
-/*                         std::cout << "locally available = " << locally_available << "\n"; */ 
-/*                     } */
-/*                 } */
-/*             } */
-/*         } */
-/*     } */
-
-/*     std::cout << "print decisions\n"; */
-/*     for(auto alloc = allocation_size_map.begin(); alloc != allocation_size_map.end(); alloc++) { */
-/*         std::cout << alloc->first << "\n"; */
-/*         auto common_decision = PENGUIN_DEC_NONE; */
-/*         for(auto invid = InvocationIDtoAllocationToDecisionMap.begin(); */ 
-/*                 invid != InvocationIDtoAllocationToDecisionMap.end(); invid++) { */
-/*             std::cout << invid->first << "  " << InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first] << "\n"; */
-/*         } */
-/*         std::cout << "\n"; */
-/*     } */
-
-/*     // identify common decisions */
-/*     // by going over each allocation, and looking at each of the decisions (nc2) */
-/*     std::cout << "identify common decisions\n"; */
-/*     for(auto alloc = allocation_size_map.begin(); alloc != allocation_size_map.end(); alloc++) { */
-/*         std::cout << alloc->first << "\n"; */
-/*         auto common_decision = PENGUIN_DEC_NONE; */
-/*         for(auto invid = InvocationIDtoAllocationToDecisionMap.begin(); */ 
-/*                 invid != InvocationIDtoAllocationToDecisionMap.end(); invid++) { */
-/*             if(AllocationToDecisionMap[alloc->first]  == PENGUIN_DEC_ACCESS_COUNTER ) { */
-/*                 AllocationToCommonDecisionMap[alloc->first] = PENGUIN_DEC_ACCESS_COUNTER; */
-/*             } */
-/*         } */
-/*         for(auto invid = InvocationIDtoAllocationToDecisionMap.begin(); */ 
-/*                 invid != InvocationIDtoAllocationToDecisionMap.end(); invid++) { */
-/*             auto dec = InvocationIDtoAllocationToDecisionMap[invid->first][alloc->first]; */
-/*             if(AllocationToDecisionMap[alloc->first]  == PENGUIN_DEC_ITERATION_MIGRATION ) { */
-/*                 if(dec == PENGUIN_DEC_GPU_HOST_PARTIAL_PIN) { */
-/*                     common_decision = PENGUIN_DEC_ITERATION_MIGRATION_PLUS_GPU_HOST_PIN; */
-/*                     AllocationToPartialSizeMap[alloc->first] */
-/*                         = InvocationIDtoAllocationToPartialSize[invid->first][alloc->first] ; */
-/*                 } */
-/*             } */
-/*             if(dec == PENGUIN_DEC_HOST_PIN && common_decision == PENGUIN_DEC_NONE) { */
-/*                 common_decision = PENGUIN_DEC_HOST_PIN; */
-/*             } else if(dec == PENGUIN_DEC_GPU_HOST_PARTIAL_PIN && common_decision == PENGUIN_DEC_NONE) { */
-/*                 common_decision = PENGUIN_DEC_GPU_HOST_PARTIAL_PIN; */
-/*             } else if(dec == PENGUIN_DEC_GPU_HOST_PARTIAL_PIN && common_decision == PENGUIN_DEC_HOST_PIN) { */
-/*                 common_decision = PENGUIN_DEC_GPU_HOST_PARTIAL_PIN; */
-/*                 auto parsize = AllocationToPartialSizeMap[alloc->first]; */
-/*                 if(parsize < InvocationIDtoAllocationToPartialSize[invid->first][alloc->first]) { */
-/*                     AllocationToPartialSizeMap[alloc->first] */
-/*                         = InvocationIDtoAllocationToPartialSize[invid->first][alloc->first] ; */
-/*                 } */
-/*             } */
-/*         } */
-/*         std::cout << "common decision = " << common_decision << "\n"; */
-/*         for(auto invid = InvocationIDtoAllocationToDecisionMap.begin(); */ 
-/*                 invid != InvocationIDtoAllocationToDecisionMap.end(); invid++) { */
-/*             if(common_decision == PENGUIN_DEC_NONE) { */
-/*                 if(AllocationToPrefetchBoolMap[alloc->first] == false) { */
-/*                     InvocationIDtoDecisionBoolMap[invid->first] = true; */
-/*                     std::cout << alloc->first << " "; */
-/*                     std::cout << "need to take per allocation, per invocation decision\n"; */
-/*                     AllocationStateMap[alloc->first] = PENGUIN_STATE_UNKNOWN; */
-/*                 } */
-/*             } */
-/*             else { */
-/*                 AllocationToCommonDecisionMap[alloc->first] = common_decision; */
-/*             } */
-/*         } */
-/*     } */
-
-/*     // if a data structure is being iteration prefetched and GPU host pinned */
-
-/*     // perform default decision */
-/*     // */
-/*     std::cout << "performing allocation common decision here\n"; */
-/*     // first handle pointer chase */
-/*     bool pchase_enabled = false; */
-/*     for(auto alloc = AllocationToCommonDecisionMap.begin(); */
-/*             alloc != AllocationToCommonDecisionMap.end(); alloc++) { */
-/*         if(alloc->second == PENGUIN_DEC_ACCESS_COUNTER) { */
-/*             pchase_enabled = true; */
-/*             penguinEnableAccessCounters(); */
-/*         } */
-/*     } */
-/*     for(auto alloc = AllocationToCommonDecisionMap.begin(); */
-/*             alloc != AllocationToCommonDecisionMap.end(); alloc++) { */
-/*         std::cout << alloc->first << " " << alloc->second << "\n"; */
-/*         if(alloc->second == PENGUIN_DEC_MIGRATE_ON_DEMAND) { */
-/*             continue; */
-/*         } */
-/*         if(alloc->second == PENGUIN_DEC_GPU_PIN) { */
-/*             auto dsize = allocation_size_map[alloc->first]; */
-/*             std::cout << "gpu pin " << dsize << "\n"; */
-/*             char* ptr = (char*) alloc->first; */
-/*             /1* cudaMemPrefetchAsync(ptr, dsize, 0, 0 ); *1/ */
-/*             /1* penguinSetPrioritizedLocation((char*) alloc->first, dsize, 0); *1/ */
-/*             continue; */
-/*         } */
-/*         if(alloc->second == PENGUIN_DEC_ITERATION_MIGRATION_PLUS_GPU_HOST_PIN) { */
-/*             // asssuming partial size is larger than prefetch size */
-/*             // TODO: check for the above */
-/*             unsigned long long partial_size = AllocationToPartialSizeMap[alloc->first]; */
-/*             auto span = mmg_alloc_span_map_iteronly[alloc->first]; */
-/*             unsigned long long prefetch_iters_per_batch = partial_size/span; */
-/*             unsigned long long prefetch_size = AllocationToPrefetchSizeMap[alloc->first]; */
-/*             std::cout << "prefetching and partial pinning together\n"; */
-/*             std::cout << prefetch_size << " " << partial_size << "  " << span << " " << prefetch_iters_per_batch << "\n"; */
-/*             AllocationToPrefetchBoolMap[alloc->first] = true; */
-/*             AllocationToPrefetchSizeMap[alloc->first] = prefetch_size + partial_size; */
-/*             AllocationToPrefetchItersPerBatchMap[alloc->first] = prefetch_iters_per_batch; */
-/*             char* ptr = (char*) alloc->first; */
-/*             auto dsize = allocation_size_map[alloc->first]; */
-/*             cudaMemAdvise(ptr, dsize, cudaMemAdviseSetAccessedBy, 0); */
-/*         } */
-/*         if(alloc->second == PENGUIN_DEC_GPU_HOST_PARTIAL_PIN) { */
-/*             auto dsize = allocation_size_map[alloc->first]; */
-/*             auto partial_size = AllocationToPartialSizeMap[alloc->first]; */
-/*             std::cout << "partial pin " << partial_size << "\n"; */
-/*             if(AllocationToPrefetchBoolMap[alloc->first] == true) { */
-/*                 std::cout << "prefetching and partial pinning together\n"; */
-/*                 // asssuming partial size is larger than prefetch size */
-/*                 // TODO: check for the above */
-/*                 AllocationToPrefetchSizeMap[alloc->first] = partial_size; */
-/*                 auto span = mmg_alloc_span_map_iteronly[alloc->first]; */
-/*                 auto prefetch_iters_per_batch = partial_size/span; */
-/*                 AllocationToPrefetchItersPerBatchMap[alloc->first] = prefetch_iters_per_batch; */
-/*             } else { */
-/*                 char* ptr = (char*) alloc->first; */
-/*                 cudaMemPrefetchAsync(ptr, partial_size, 0, 0 ); */
-/*                 penguinSetPrioritizedLocation((char*) alloc->first, partial_size, 0); */
-/*                 cudaMemAdvise(ptr + partial_size, dsize - partial_size, cudaMemAdviseSetAccessedBy, 0); */
-/*             } */
-/*             continue; */
-/*         } */
-/*         if(alloc->second == PENGUIN_DEC_HOST_PIN) { */
-/*             auto dsize = allocation_size_map[alloc->first]; */
-/*             std::cout << "host pin " << dsize << "\n"; */
-/*             char* ptr = (char*) alloc->first; */
-/*             cudaMemAdvise(ptr , dsize, cudaMemAdviseSetAccessedBy, 0); */
-/*             continue; */
-/*         } */
-/*     } */
-/*     return; */
-/* } */
 
 // Take the memory size (can also get from this file, or by querying APIs),
 // and the invocation ID;
@@ -1735,6 +1410,8 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
         std::map<void*, unsigned long long> mmg_alloc_ac_map;
         std::map<void*, bool> mmg_alloc_pchase_map;
         std::map<void*, double> mmg_alloc_ad_map;
+
+	// Find the size of each allocation
         for (auto a = aid_allocation_map.begin(); a != aid_allocation_map.end(); a++) {
             /* std::cout << a->first << " " << aid_ac_map[a->first] << " " << a->second << " "; */
             // find the allocation
@@ -1751,6 +1428,7 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
         if(invid == 1) {
         }
         /* std::cout << "working set size map\n"; */
+	// Find the working set for each invocation
         for (auto a = aid_wss_map.begin(); a != aid_wss_map.end(); a++) {
             if(aid_invocation_id_map[a->first] == invid) {
                 /* std::cout << a->first << " " << a->second << "\n"; */
@@ -1859,7 +1537,10 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
                         /* std::cout << "leave to pchase\n"; */
                         continue;
                     }
-                    if(awss->second < dsize && dsize > 2* 1024*1024 && ad > 5) { //TODO:keep low ad temporal on CPU, unless these is left over memory even after reserving enough for the entire temporal
+                    if(awss->second < dsize && dsize > 2* 1024*1024 && ad > 5) {
+                        // TODO:keep low ad temporal on CPU, unless these is left
+                        // over memory even after reserving enough for the entire temporal
+
                         /* std::cout << "temporal\n"; */
                         available -= awss->second;
                         /* std::cout << available <<  std::endl; */
@@ -1888,6 +1569,7 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
                                     penguinSetPrioritizedLocation((char*) a->first, available, 0);
                                     cudaMemPrefetchAsync((char*)a->first, available, 0, 0 );
                                     /* std::cout << "cpu pin rest B\n"; */
+                                    dprintf(2, "penguin: cudaMemAdviseSetAccessedBy at %p for %ld B\n", ((char *)a->first + available), dsize - available);
                                     cudaMemAdvise((char*) a->first + available, dsize - available, cudaMemAdviseSetAccessedBy, 0);
                                     pinned_memory += available;
                         /* std::cout << "pinned = " << pinned_memory << std::endl; */
@@ -1913,6 +1595,7 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
                                         /* std::cout << "cpu pin rest c.2\n"; */
                                         AllocationStateMap[addr] = PENGUIN_STATE_GPU_PINNED;
                                         cudaMemPrefetchAsync((char*)a->first, available, 0, 0 );
+                                        dprintf(2, "penguin: cudaMemAdviseSetAccessedBy at %p for %ld B\n", ((char *)a->first + available), dsize - available);
                                         cudaMemAdvise((char*) a->first +available, dsize -available, cudaMemAdviseSetAccessedBy, 0);
                                     pinned_memory += available;
                         /* std::cout << "pinned = " << pinned_memory << std::endl; */
@@ -1922,6 +1605,7 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
                                 }
                             } else {
                                 /* std::cout << "cpu pin rest D\n"; */
+                                dprintf(2, "penguin: cudaMemAdviseSetAccessedBy at %p for %ld B\n", (a->first), dsize);
                                 cudaMemAdvise((char*) a->first , dsize, cudaMemAdviseSetAccessedBy, 0);
                                 penguinSetNoMigrateRegion((char*) a->first, dsize, 0, true);
                             }
@@ -1939,6 +1623,12 @@ void perform_memory_management(unsigned long long memsize, unsigned invid) {
     return;
 }
 
+/*
+ * LIVE code
+ * inserted once for non-iterative kernels. Inserted at the kernel call site.
+ *
+ * mmg_invid_alloc_list: memory mgmt invocation ID
+ */
 extern "C"
 void MemoryMgmtFirstInvocationNonIter() {
     /* std::cout <<"MemoryMgmtFirstInvocationNonIter\n"; */
@@ -1950,6 +1640,8 @@ void MemoryMgmtFirstInvocationNonIter() {
         auto invid = aid_invocation_id_map_reuse[a->first];
         mmg_invid_alloc_list[invid].insert(alloc);
     }
+
+    // now get MAX invocation ID. aid_ac_map_reuse is prolly a static list of invocations
     /* std::cout << "invid to alloc list\n"; */
     unsigned max_invid = 0;
     for(auto i = mmg_invid_alloc_list.begin(); i != mmg_invid_alloc_list.end(); i++) {
@@ -1984,20 +1676,6 @@ void MemoryMgmtFirstInvocationNonIter() {
     }
     /* std::cout << "end MemoryMgmtFirstInvocationNonIter\n"; */
 }
-
-/* std::pair<double, double> compute_intersection(double m1, double c1, double m2, double c2) { */
-/*     double x = (c2 - c1) / (m1 - m2); */
-/*     double y = m1 * x + c1; */
-/*     return std::make_pair<x,y>; */
-/* } */
-
-/* // ax + by < c */
-/* // x_min, y_min are zero */
-/* extern "C" */
-/* void compute_area_polyhedron (int x_max, int y_max, int a, int b, int c) */ 
-/* { */
-
-/* } */
 
 extern "C"
 unsigned larger_of_two (unsigned a, unsigned b) {
